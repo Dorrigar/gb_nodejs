@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Dorrigar/gb_nodejs#readme",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "events": "^3.3.0"
   }
 }
