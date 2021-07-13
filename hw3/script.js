@@ -43,7 +43,6 @@ readStream.on('end', () => {
     writeStreamMap.forEach((writeStream, ip) => {
         if (lastInChunk && lastInChunk.includes(ip)) writeStream.write(lastInChunk)
         writeStream.close()
-        writeStream.on('close', () => console.log())
     })
 })
 
