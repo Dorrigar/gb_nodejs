@@ -105,5 +105,5 @@ dist
 
 # Env
 /.idea/
-/test.js
+test.*
 /hw3/streams.zip
