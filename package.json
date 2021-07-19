@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "hw4": "node hw4/script.js",
-    "start": "npx nodemon hw5/server.js"
+    "start": "npx nodemon hw5/script.js"
   },
   "bin": {
     "reader": "hw4/script.js"
