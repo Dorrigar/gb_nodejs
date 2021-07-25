@@ -16,10 +16,12 @@ const options = yargs
 fileRequest(folderPath)
 
 function fileRequest(folderPath) {
-    let list = fs.readdirSync(folderPath)
-    list.unshift("..")
+    if (isFile(folderPath)) readFile(folderPath)
+    else {
+        let list = fs.readdirSync(folderPath)
+        list.unshift("..")
 
-    inquirer
+        inquirer
         .prompt([
             {
                 name: "fileName",
@@ -29,10 +31,11 @@ function fileRequest(folderPath) {
             },
         ])
 
-        .then((answer) => {
-            const filePath = path.join(folderPath, answer.fileName)
-            isFile(filePath) ? readFile(filePath) : fileRequest(filePath)
-        })
+            .then((answer) => {
+                const filePath = path.join(folderPath, answer.fileName)
+                isFile(filePath) ? readFile(filePath) : fileRequest(filePath)
+            })
+    }
 }
 
 function isFile(filePath) {
