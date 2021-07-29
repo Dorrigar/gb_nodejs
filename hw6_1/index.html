@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чат</title>
+</head>
+<body>
+<div class="container">
+    <div >
+        <!-- количество подключений здесь -->
+        <div id="connectionsCount"></div>
+        <h4>Откройте файл или папку</h4>
+        <!-- Вывод списка здесь -->
+        <div id="filesAndDirs"></div>
+    </div>
+</div>
+<!-- Подключаем jQuery, а также Socket.io -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    $(function() {
+        const socket = io.connect(),
+            $filesAndDirs = $("#filesAndDirs"),
+            $connectionsCount = $("#connectionsCount")
+
+        socket.on('SERVER_MSG', function(data) {
+            $filesAndDirs.replaceWith(data.mess);
+        })
+
+        socket.on('CONN_EVENT', function(data) {
+            $connectionsCount.replaceWith(data.mess);
+        })
+    })
+</script>
+</body>
+</html>
